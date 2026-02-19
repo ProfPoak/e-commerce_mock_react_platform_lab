@@ -1,14 +1,9 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import { ProductContext, ProductProvider } from '../context/ProductContext'
 import { useContext } from 'react'
+import { mockProducts, mockApiFetch } from './mockData'
 
 describe('product context', () => {
-    // Fake product data to use instead of real API calls
-    const mockProducts = [
-    { id: 1, name: 'Swiss Chocolate', description: 'Delicious and creamy', price: 10 },
-    { id: 2, name: 'Belgian Dark Chocolate', description: 'Decadent and Dark', price: 10 }
-    ]
-
     // A simple helper component that consumes the context so we can test it
     const TestComponent = () => {
     const { products, loading } = useContext(ProductContext)
@@ -22,12 +17,7 @@ describe('product context', () => {
 
     // Before each test, mock fetch to return our fake data
     beforeEach(() => {
-    global.fetch = vi.fn(() =>
-        Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(mockProducts)
-        })
-    )
+        mockApiFetch()
     })
 
     test('products load correctly from API', async () => {
