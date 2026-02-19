@@ -1,0 +1,14 @@
+{ "products": [
+    {
+    "id": 1,
+    "name": "Swiss Chocolate",
+    "description": "Delicious and creamy",
+    "price": 10
+},
+{
+    "id": 2,
+    "name": "Belgian Special Dark Chocolate",
+    "description": "Decidant and Dark",
+    "price": 10
+}
+]}
