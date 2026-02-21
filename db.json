@@ -11,6 +11,12 @@
       "name": "Belgian Chocolate",
       "description": "Decedent and Dark",
       "price": "10"
+    },
+    {
+      "id": "c1f2",
+      "name": "Hershey's",
+      "description": "classic",
+      "price": "5"
     }
   ]
 }
