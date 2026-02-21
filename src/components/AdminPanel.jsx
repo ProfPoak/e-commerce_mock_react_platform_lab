@@ -1,9 +1,10 @@
-import { useState, useId } from 'react'
+import { useState, useId, useContext } from 'react'
 import AddProductForm from './AddProductForm'
 import AdminProductTable from './AdminProductTable'
+import { ProductContext } from '../context/ProductContext'
 
 function AdminPanel() {
-    const [isAdmin, setIsAdmin] = useState(false)
+    const { isAdmin, setIsAdmin } = useContext(ProductContext)
     const [password, setPassword] =useState('')
 
     const passwordId = useId()

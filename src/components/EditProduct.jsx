@@ -1,13 +1,16 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useContext, useState, useId, useEffect } from 'react'
 import { ProductContext } from '../context/ProductContext'
 import { useFetch } from '../hooks/useFetch'
 
 function EditProduct() {
+    //Implementing Hooks
     const { products, setProducts, serverUrl, loading } = useContext(ProductContext)
     const { id } = useParams()
     const { makeRequest } = useFetch()
+    const navigate = useNavigate()
     
+    //Defining the correct product
     const product = products.find(product => product.id === id)
     const [name, setName] = useState(product?.name)
     const [description, setDescription] = useState(product?.description)
@@ -85,6 +88,7 @@ function EditProduct() {
                 <button>Update</button>
                 {success && <p>Product successfully updated!</p>}
             </form>
+            <button onClick={() => navigate('/admin')}>Go Back</button>
         </div>
     )
 }

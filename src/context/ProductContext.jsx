@@ -5,6 +5,7 @@ export const ProductContext = createContext()
 export function ProductProvider({ children }) {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
+    const [isAdmin, setIsAdmin] = useState(false)
     const serverUrl = 'http://localhost:3001/products'
 
     useEffect(() => {
@@ -31,7 +32,7 @@ export function ProductProvider({ children }) {
     }, [])
 
     return (
-        <ProductContext.Provider value={{ products, setProducts, loading, serverUrl }}>
+        <ProductContext.Provider value={{ products, setProducts, loading, serverUrl, isAdmin, setIsAdmin }}>
             {children}
         </ProductContext.Provider>
     )

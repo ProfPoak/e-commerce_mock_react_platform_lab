@@ -5,6 +5,12 @@
       "name": "Swiss Chocolate",
       "description": "Delicious and creamy",
       "price": "24"
+    },
+    {
+      "id": "1a7e",
+      "name": "Belgian Chocolate",
+      "description": "Decedent and Dark",
+      "price": "10"
     }
   ]
 }
