@@ -45,7 +45,6 @@ describe('EditProduct should', () => {
 
         await userEvent.clear(screen.getByLabelText('Price:'))
         await userEvent.type(screen.getByLabelText('Price:'), '20')
-        await userEvent.type(screen.getByLabelText('Password:'), 'admin')
         await userEvent.click(screen.getByText('Update'))
 
         await waitFor(() => {
@@ -70,7 +69,6 @@ describe('EditProduct should', () => {
 
     await userEvent.clear(screen.getByLabelText('Price:'))
     await userEvent.type(screen.getByLabelText('Price:'), '20')
-    await userEvent.type(screen.getByLabelText('Password:'), 'admin')
     await userEvent.click(screen.getByText('Update'))
 
     await waitFor(() => {
