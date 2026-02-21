@@ -19,10 +19,11 @@ describe('AddProductForm should', () => {
         expect(screen.getByLabelText('Name:')).toBeInTheDocument()
         expect(screen.getByLabelText('Description:')).toBeInTheDocument()
         expect(screen.getByLabelText('Price:')).toBeInTheDocument()
+        expect(screen.getByLabelText('Password:')).toBeInTheDocument()
         expect(screen.getByText('Submit')).toBeInTheDocument()
     })
 
-    test('submits a new product', async () => {
+    test('submits a new product with correct password', async () => {
         const setProducts = vi.fn()
 
         render(
@@ -34,6 +35,7 @@ describe('AddProductForm should', () => {
         await userEvent.type(screen.getByLabelText('Name:'), 'Dark Chocolate')
         await userEvent.type(screen.getByLabelText('Description:'), 'Rich and bold')
         await userEvent.type(screen.getByLabelText('Price:'), '15')
+        await userEvent.type(screen.getByLabelText('Password:'), 'admin')
         await userEvent.click(screen.getByText('Submit'))
 
         await waitFor(() => {
@@ -53,10 +55,31 @@ describe('AddProductForm should', () => {
         await userEvent.type(screen.getByLabelText('Name:'), 'Dark Chocolate')
         await userEvent.type(screen.getByLabelText('Description:'), 'Rich and bold')
         await userEvent.type(screen.getByLabelText('Price:'), '15')
+        await userEvent.type(screen.getByLabelText('Password:'), 'admin')
         await userEvent.click(screen.getByText('Submit'))
 
         await waitFor(() => {
             expect(screen.getByText('Product successfully added!')).toBeInTheDocument()
+        })
+    })
+
+    test('does not submit with incorrect password', async () => {
+        const setProducts = vi.fn()
+
+        render(
+            <ProductContext.Provider value={{ products: mockProducts, setProducts, loading: false }}>
+                <AddProductForm />
+            </ProductContext.Provider>
+        )
+
+        await userEvent.type(screen.getByLabelText('Name:'), 'Dark Chocolate')
+        await userEvent.type(screen.getByLabelText('Description:'), 'Rich and bold')
+        await userEvent.type(screen.getByLabelText('Price:'), '15')
+        await userEvent.type(screen.getByLabelText('Password:'), 'wrongpassword')
+        await userEvent.click(screen.getByText('Submit'))
+
+        await waitFor(() => {
+            expect(setProducts).not.toHaveBeenCalled()
         })
     })
 })

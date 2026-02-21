@@ -7,13 +7,20 @@ function AddProductForm() {
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState("")
     const [success, setSuccess] = useState(false)
+    const [password, setPassword] = useState("")
 
     const nameId = useId()
     const descriptionId = useId()
     const priceId = useId()
+    const passwordId = useId()
 
     function handleSubmit(e) {
         e.preventDefault()
+
+        if (password !== 'admin') {
+            alert('Incorrect password')
+            return
+        }
 
         const newProduct = {
             name,
@@ -60,6 +67,12 @@ function AddProductForm() {
                 setPrice(e.target.value)
                 setSuccess(false)
                 }} />
+            <label htmlFor={passwordId}>Password:</label>
+            <input type="text" name='password' id={passwordId} value={password} onChange={(e) => {
+            setPassword(e.target.value)
+            setSuccess(false)
+            }} />
+                
             <button>Submit</button>
             {success && <p>Product successfully added!</p>}
         </form>

@@ -17,6 +17,12 @@
       "name": "Hershey's",
       "description": "Classic milk chocolate",
       "price": "5"
+    },
+    {
+      "id": "2401",
+      "name": "Durango",
+      "description": "Good",
+      "price": "15"
     }
   ]
 }
