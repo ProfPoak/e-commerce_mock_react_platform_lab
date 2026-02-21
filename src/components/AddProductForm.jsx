@@ -51,31 +51,34 @@ function AddProductForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor={nameId}>Name:</label>
-            <input type="text" name='name' id={nameId} value={name} onChange={(e) => {
-                setName(e.target.value)
+        <div>
+            <h1>Add Product</h1>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor={nameId}>Name:</label>
+                <input type="text" name='name' id={nameId} value={name} onChange={(e) => {
+                    setName(e.target.value)
+                    setSuccess(false)
+                    }} />
+                <label htmlFor={descriptionId}>Description:</label>
+                <input type="text" name='description' id={descriptionId} value={description} onChange={(e) => {
+                    setDescription(e.target.value)
+                    setSuccess(false)
+                    }} />
+                <label htmlFor={priceId}>Price:</label>
+                <input type="text" name='price' id={priceId} value={price} onChange={(e) => {
+                    setPrice(e.target.value)
+                    setSuccess(false)
+                    }} />
+                <label htmlFor={passwordId}>Password:</label>
+                <input type="text" name='password' id={passwordId} value={password} onChange={(e) => {
+                setPassword(e.target.value)
                 setSuccess(false)
                 }} />
-            <label htmlFor={descriptionId}>Description:</label>
-            <input type="text" name='description' id={descriptionId} value={description} onChange={(e) => {
-                setDescription(e.target.value)
-                setSuccess(false)
-                }} />
-            <label htmlFor={priceId}>Price:</label>
-            <input type="text" name='price' id={priceId} value={price} onChange={(e) => {
-                setPrice(e.target.value)
-                setSuccess(false)
-                }} />
-            <label htmlFor={passwordId}>Password:</label>
-            <input type="text" name='password' id={passwordId} value={password} onChange={(e) => {
-            setPassword(e.target.value)
-            setSuccess(false)
-            }} />
-                
-            <button>Submit</button>
-            {success && <p>Product successfully added!</p>}
-        </form>
+                    
+                <button>Submit</button>
+                {success && <p>Product successfully added!</p>}
+            </form>
+        </div>
     )
 }
 
