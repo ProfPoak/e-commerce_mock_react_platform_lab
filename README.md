@@ -1,16 +1,48 @@
-# React + Vite
+# Chocolate Haven - E-Commerce Admin Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based e-commerce platform for managing and browsing a chocolate product catalog.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Prerequisites:** Node.js installed
 
-## React Compiler
+1. Clone the repository and install dependencies:
+```bash
+npm install
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. Start the JSON server (mock backend):
+```bash
+npm run server
+```
 
-## Expanding the ESLint configuration
+3. In a separate terminal, start the development server:
+```bash
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+4. Run the test suite:
+```bash
+npm test
+```
+
+The app runs on `http://localhost:5173` and the API on `http://localhost:3001`.
+
+## Features
+
+- **Home** — Store landing page with hero section and about blurb
+- **Shop** — Browse all available chocolate products
+- **Admin Portal** — Password-protected (`admin`) dashboard with:
+  - Add new products
+  - Edit existing products
+  - Delete products
+- **Client-side routing** — Seamless navigation between pages
+- **Global state** — Product data managed via React Context
+- **Custom hook** — `useFetch` handles all API requests
+
+## Known Limitations
+
+- Authentication is a simple password check (`admin`) — not suitable for production
+- No search or filter functionality on the shop page
+- No form validation beyond password checking
+- Data is not persisted beyond the local `db.json` file
