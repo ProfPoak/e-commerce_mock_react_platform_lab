@@ -5,11 +5,12 @@ export const ProductContext = createContext()
 export function ProductProvider({ children }) {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
+    const serverUrl = 'http://localhost:3001/products'
 
     useEffect(() => {
         setLoading(true)
         
-        fetch('http://localhost:3001/products')
+        fetch(serverUrl)
             .then(r => {
                 if(r.ok) {
                     return r.json()
@@ -30,7 +31,7 @@ export function ProductProvider({ children }) {
     }, [])
 
     return (
-        <ProductContext.Provider value={{ products, setProducts, loading }}>
+        <ProductContext.Provider value={{ products, setProducts, loading, serverUrl }}>
             {children}
         </ProductContext.Provider>
     )
