@@ -17,7 +17,6 @@ function EditProduct() {
     const [price, setPrice] = useState(product?.price)
     
     const [success, setSuccess] = useState(false)
-    const [password, setPassword] = useState('')
 
     const nameId = useId()
     const descriptionId = useId()
