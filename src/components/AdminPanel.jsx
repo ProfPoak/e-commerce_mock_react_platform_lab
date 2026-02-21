@@ -1,5 +1,6 @@
 import { useState, useId } from 'react'
 import AddProductForm from './AddProductForm'
+import AdminProductTable from './AdminProductTable'
 
 function AdminPanel() {
     const [isAdmin, setIsAdmin] = useState(false)
@@ -28,6 +29,7 @@ function AdminPanel() {
     return (
         <div>
             <AddProductForm />
+            <AdminProductTable />
         </div>
     )
 }
