@@ -1,28 +1,16 @@
 {
   "products": [
     {
-      "id": "1",
+      "id": "7186",
       "name": "Swiss Chocolate",
       "description": "Delicious and creamy",
-      "price": "10"
+      "price": "24"
     },
     {
-      "id": "2",
+      "id": "1a7e",
       "name": "Belgian Chocolate",
-      "description": "Decedant and Dark",
+      "description": "Decedent and Dark",
       "price": "10"
-    },
-    {
-      "id": "a2e9",
-      "name": "Hershey's",
-      "description": "Classic milk chocolate",
-      "price": "5"
-    },
-    {
-      "id": "2401",
-      "name": "Durango",
-      "description": "Good",
-      "price": "15"
     }
   ]
 }
