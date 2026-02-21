@@ -17,12 +17,10 @@ function EditProduct() {
     const [price, setPrice] = useState(product?.price)
     
     const [success, setSuccess] = useState(false)
-    const [password, setPassword] = useState('')
 
     const nameId = useId()
     const descriptionId = useId()
     const priceId = useId()
-    const passwordId = useId()
 
     useEffect(() => {
     if (product) {
@@ -34,11 +32,6 @@ function EditProduct() {
 
     function handleSubmit(e) {
         e.preventDefault()
-
-        if (password !== 'admin') {
-            alert('Incorrect password')
-            return
-        }
         
         const updatedProduct = {
             name,
@@ -79,12 +72,6 @@ function EditProduct() {
                     setPrice(e.target.value)
                     setSuccess(false)
                     }} />
-                <label htmlFor={passwordId}>Password:</label>
-                <input type="text" name='password' id={passwordId} value={password} onChange={(e) => {
-                setPassword(e.target.value)
-                setSuccess(false)
-                }} />
-                    
                 <button>Update</button>
                 {success && <p>Product successfully updated!</p>}
             </form>

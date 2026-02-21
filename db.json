@@ -4,13 +4,19 @@
       "id": "7186",
       "name": "Swiss Chocolate",
       "description": "Delicious and creamy",
-      "price": "24"
+      "price": "20"
     },
     {
       "id": "1a7e",
       "name": "Belgian Chocolate",
       "description": "Decedent and Dark",
-      "price": "10"
+      "price": "20"
+    },
+    {
+      "id": "eeb1",
+      "name": "Durango local",
+      "description": "Beans from across the world processed locally",
+      "price": "15"
     }
   ]
 }

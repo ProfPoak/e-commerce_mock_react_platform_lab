@@ -1,26 +1,21 @@
 import { useState, useContext, useId } from 'react'
 import { ProductContext } from '../context/ProductContext'
+import { useFetch } from '../hooks/useFetch'
 
 function AddProductForm() {
-    const { setProducts } = useContext(ProductContext)
+    const { setProducts, serverUrl } = useContext(ProductContext)
+    const { makeRequest } = useFetch()
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState("")
     const [success, setSuccess] = useState(false)
-    const [password, setPassword] = useState("")
 
     const nameId = useId()
     const descriptionId = useId()
     const priceId = useId()
-    const passwordId = useId()
 
     function handleSubmit(e) {
         e.preventDefault()
-
-        if (password !== 'admin') {
-            alert('Incorrect password')
-            return
-        }
 
         const newProduct = {
             name,
@@ -28,26 +23,14 @@ function AddProductForm() {
             price
         }
 
-        fetch('http://localhost:3001/products', {
-            method: 'POST',
-            headers: {
-            'content-type': 'application/json'
-            },
-            body: JSON.stringify(newProduct) 
-        })
-        .then(r => {
-            if(r.ok) {
-                return r.json()
-            }
-            else {
-                throw new Error('Unable to add new product. Please try again.')
-            }
+        makeRequest(serverUrl, {
+            method: "POST",
+            body: newProduct
         })
         .then(newData => {
             setProducts(prevProducts => [...prevProducts, newData])
             setSuccess(true)
         })
-        .catch(error => console.log(error))
     }
 
     return (
@@ -69,12 +52,6 @@ function AddProductForm() {
                     setPrice(e.target.value)
                     setSuccess(false)
                     }} />
-                <label htmlFor={passwordId}>Password:</label>
-                <input type="text" name='password' id={passwordId} value={password} onChange={(e) => {
-                setPassword(e.target.value)
-                setSuccess(false)
-                }} />
-                    
                 <button>Submit</button>
                 {success && <p>Product successfully added!</p>}
             </form>

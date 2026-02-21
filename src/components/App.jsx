@@ -3,7 +3,6 @@ import NavBar from './NavBar.jsx'
 import Home from './Home.jsx'
 import ProductContainer from './ProductContainer.jsx'
 import AdminPanel from './AdminPanel.jsx'
-import AddProductForm from './AddProductForm.jsx'
 import EditProduct from './EditProduct.jsx'
 
 function App() {
