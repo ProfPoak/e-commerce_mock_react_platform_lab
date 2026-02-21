@@ -16,9 +16,9 @@ describe('AddProductForm should', () => {
             </ProductContext.Provider>
         )
 
-        expect(screen.getByLabelText('Name')).toBeInTheDocument()
-        expect(screen.getByLabelText('Description')).toBeInTheDocument()
-        expect(screen.getByLabelText('Price')).toBeInTheDocument()
+        expect(screen.getByLabelText('Name:')).toBeInTheDocument()
+        expect(screen.getByLabelText('Description:')).toBeInTheDocument()
+        expect(screen.getByLabelText('Price:')).toBeInTheDocument()
         expect(screen.getByText('Submit')).toBeInTheDocument()
     })
 
@@ -31,14 +31,32 @@ describe('AddProductForm should', () => {
             </ProductContext.Provider>
         )
 
-        await userEvent.type(screen.getByLabelText('Name'), 'Dark Chocolate')
-        await userEvent.type(screen.getByLabelText('Description'), 'Rich and bold')
-        await userEvent.type(screen.getByLabelText('Price'), '15')
-
+        await userEvent.type(screen.getByLabelText('Name:'), 'Dark Chocolate')
+        await userEvent.type(screen.getByLabelText('Description:'), 'Rich and bold')
+        await userEvent.type(screen.getByLabelText('Price:'), '15')
         await userEvent.click(screen.getByText('Submit'))
 
         await waitFor(() => {
             expect(setProducts).toHaveBeenCalled()
+        })
+    })
+
+    test('shows success message after product is added', async () => {
+        const setProducts = vi.fn()
+
+        render(
+            <ProductContext.Provider value={{ products: mockProducts, setProducts, loading: false }}>
+                <AddProductForm />
+            </ProductContext.Provider>
+        )
+
+        await userEvent.type(screen.getByLabelText('Name:'), 'Dark Chocolate')
+        await userEvent.type(screen.getByLabelText('Description:'), 'Rich and bold')
+        await userEvent.type(screen.getByLabelText('Price:'), '15')
+        await userEvent.click(screen.getByText('Submit'))
+
+        await waitFor(() => {
+            expect(screen.getByText('Product successfully added!')).toBeInTheDocument()
         })
     })
 })
