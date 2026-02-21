@@ -4,13 +4,13 @@
       "id": "1",
       "name": "Swiss Chocolate",
       "description": "Delicious and creamy",
-      "price": 10
+      "price": "10"
     },
     {
       "id": "2",
       "name": "Belgian Chocolate",
       "description": "Decedant and Dark",
-      "price": 10
+      "price": "10"
     },
     {
       "id": "a2e9",
